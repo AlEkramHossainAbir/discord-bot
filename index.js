@@ -17,7 +17,7 @@ client.once(Events.ClientReady, (readyClient) => {
 
 client.on('messageCreate', async (message) => {
   if (message.author?.bot) return; // ignore other bots
-  
+
   message.reply({
     content: 'Hello! I am a bot that responds to "ping" with "Pong!"',
   })
@@ -31,12 +31,9 @@ client.on('messageCreate', async (message) => {
 //   console.log(`Logged in as ${readyClient.user.tag}!`);
 // });
 
-// client.on(Events.InteractionCreate, async interaction => {
-//   if (!interaction.isChatInputCommand()) return;
-
-//   if (interaction.commandName === 'ping') {
-//     await interaction.reply('Pong!');
-//   }
-// });
+client.on("interactionCreate", async interaction => {
+    console.log('Interaction received:', interaction);
+    interaction.reply('Interaction received!');
+});
 
 client.login(TOKEN);
